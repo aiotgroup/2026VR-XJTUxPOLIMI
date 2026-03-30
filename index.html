@@ -87,6 +87,17 @@
             letter-spacing: -0.3px;
         }
 
+        /* 老师名字超链接样式 */
+        .name a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+        .name a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
         /* --- 学生作品网格 --- */
         .projects-grid {
             display: grid;
@@ -109,7 +120,6 @@
 
         .project-card:hover { transform: translateY(-8px); }
 
-        /* 核心修正：视频自适应比例容器，消除白边 */
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 */
@@ -188,7 +198,9 @@
         <div class="staff-card">
             <img src="images/wf2.jpg" alt="授课老师">
             <span class="role-tag tag-teacher">授课教师（Instructor）</span>
-            <div class="name">王飞（Fei Wang）</div>
+            <div class="name">
+                <a href="https://gr.xjtu.edu.cn/zh/web/feynmanw" target="_blank">王飞（Fei Wang）</a>
+            </div>
         </div>
 
         <div class="spacer"></div>
