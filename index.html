@@ -1,3 +1,10 @@
+没问题，这在 UI 设计上也是一种很好的交互习惯（点击头像或名字都能跳转）。
+
+我已经将 <a> 标签扩展到了包裹整个 staff-card 内部的图片和名字区域，并修正了 CSS 确保点击区域正确且没有多余的蓝色边框。
+
+以下是完整的 HTML 代码：
+
+HTML
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -54,6 +61,13 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             text-align: center;
             border: 1px solid #eee;
+            transition: transform 0.2s;
+        }
+
+        /* 鼠标悬停在老师卡片上时有轻微放大效果 */
+        .staff-card.link-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
 
         .staff-card img {
@@ -63,6 +77,7 @@
             border-radius: 6px;
             margin-bottom: 8px;
             background: #f0f0f0;
+            display: block;
         }
 
         .role-tag {
@@ -87,15 +102,11 @@
             letter-spacing: -0.3px;
         }
 
-        /* 老师名字超链接样式 */
-        .name a {
+        /* 去除超链接默认样式 */
+        .card-link {
             text-decoration: none;
-            color: var(--primary-color);
-            transition: color 0.3s;
-        }
-        .name a:hover {
-            color: var(--accent-color);
-            text-decoration: underline;
+            color: inherit;
+            display: block;
         }
 
         /* --- 学生作品网格 --- */
@@ -195,34 +206,41 @@
     <h1>2026年春季，西安交通大学-米兰理工学院<br>虚拟现实课程 大作业汇总展示</h1>
 
     <div class="staff-section">
-        <div class="staff-card">
-            <img src="images/wf2.jpg" alt="授课老师">
-            <span class="role-tag tag-teacher">授课教师（Instructor）</span>
-            <div class="name">
-                <a href="https://gr.xjtu.edu.cn/zh/web/feynmanw" target="_blank">王飞（Fei Wang）</a>
+        
+        <a href="https://gr.xjtu.edu.cn/zh/web/feynmanw" target="_blank" class="card-link">
+            <div class="staff-card link-card">
+                <img src="images/wf2.jpg" alt="王飞老师">
+                <span class="role-tag tag-teacher">授课教师（Instructor）</span>
+                <div class="name">王飞（Fei Wang）</div>
             </div>
-        </div>
+        </a>
 
         <div class="spacer"></div>
 
-        <div class="staff-card">
-            <img src="images/zhangtt.png" alt="助教1">
-            <div class="role-tag tag-pink">助教 (TA)</div>
-            <div class="name">张婷婷（Tingting Zhang）</div>
-        </div>
+        <a href="https://scholar.google.com/citations?user=R7kxvQkAAAAJ" target="_blank" class="card-link">
+            <div class="staff-card">
+                <img src="images/zhangtt.png" alt="张婷婷">
+                <div class="role-tag tag-pink">助教 (TA)</div>
+                <div class="name">张婷婷（Tingting Zhang）</div>
+            </div>
+        </a>
 
-        <div class="staff-card">
-            <img src="images/lyn.jpg" alt="助教2">
-            <div class="role-tag tag-pink">助教 (TA)</div>
-            <div class="name">李怡诺（Yinuo Li）</div>
-        </div>
+        <a href="#" target="_blank" class="card-link">
+            <div class="staff-card">
+                <img src="images/lyn.jpg" alt="李怡诺">
+                <div class="role-tag tag-pink">助教 (TA)</div>
+                <div class="name">李怡诺（Yinuo Li）</div>
+            </div>
+        </a>
 
-        <div class="staff-card">
-            <img src="images/yaningli.jpg" alt="助教3">
-            <div class="role-tag tag-blue">助教 (TA)</div>
-            <div class="name">李亚宁（Yaning Li）</div>
+        <a href="https://scholar.google.com/citations?user=ydbRdm4AAAAJ" target="_blank" class="card-link">
+            <div class="staff-card">
+                <img src="images/yaningli.jpg" alt="李亚宁">
+                <div class="role-tag tag-blue">助教 (TA)</div>
+                <div class="name">李亚宁（Yaning Li）</div>
+            </div>
+        </a>
         </div>
-    </div>
 
     <div class="projects-grid">
         
