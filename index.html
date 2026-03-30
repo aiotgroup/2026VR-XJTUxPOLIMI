@@ -5,65 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 VR课程大作业汇总展示</title>
     <style>
-        body { font-family: "Microsoft YaHei", sans-serif; line-height: 1.6; color: #333; max-width: 1200px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
-        h1 { text-align: center; color: #2c3e50; margin-bottom: 50px; }
+        :root { --primary-color: #2c3e50; --accent-color: #3498db; --bg-color: #f4f7f9; }
+        body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.6; color: #333; max-width: 1200px; margin: 0 auto; padding: 40px 20px; background-color: var(--bg-color); }
         
-        /* 师资团队部分 */
-        .team-section { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 60px; }
-        .member-card { text-align: center; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 200px; }
-        .member-card img { width: 150px; height: 180px; object-fit: cover; border-radius: 5px; margin-bottom: 10px; background-color: #ddd; }
-        .role { color: #7f8c8d; font-size: 0.9em; }
+        h1 { text-align: center; color: var(--primary-color); font-size: 2em; margin-bottom: 60px; line-height: 1.4; }
+        
+        /* 师资团队布局 */
+        .staff-section { margin-bottom: 80px; }
+        .teacher-row { display: flex; justify-content: center; margin-bottom: 30px; }
+        .ta-row { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        
+        .card { background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+        .staff-card { width: 220px; padding: 15px; text-align: center; }
+        .staff-card img { width: 100%; height: 260px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; background: #eee; }
+        .role-tag { display: inline-block; padding: 3px 12px; border-radius: 15px; font-size: 0.85em; margin-bottom: 8px; color: white; }
+        .tag-teacher { background-color: #e74c3c; }
+        .tag-ta { background-color: #95a5a6; }
+        .name { font-weight: bold; font-size: 1.1em; color: var(--primary-color); }
 
-        /* 作品列表部分 */
+        /* 作品网格：一行3个，手机端自动变1个 */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .project-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
-        .project-card:hover { transform: translateY(-5px); }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-        .project-info { padding: 20px; }
-        .project-title { font-size: 1.25em; font-weight: bold; margin-bottom: 10px; color: #2980b9; }
-        .author { color: #e67e22; font-weight: 500; margin-bottom: 10px; }
-        .description { font-size: 0.95em; color: #666; text-align: justify; }
+        .project-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #eee; }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        
+        /* 视频容器 */
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; background: #000; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        
+        .project-content { padding: 20px; flex-grow: 1; }
+        .project-title { font-size: 1.2em; font-weight: bold; color: var(--accent-color); margin-bottom: 12px; }
+        
+        /* 四人作者布局 */
+        .author-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px; }
+        .author-item { font-size: 0.85em; background: #f0f2f5; padding: 4px 8px; border-radius: 4px; color: #555; text-align: center; }
+        
+        .project-desc { font-size: 0.9em; color: #666; text-align: justify; line-height: 1.5; border-top: 1px solid #f0f0f0; padding-top: 10px; }
+        
+        footer { text-align: center; margin-top: 80px; padding: 40px; color: #999; border-top: 1px solid #ddd; }
     </style>
 </head>
 <body>
 
     <h1>2026年春季，西安交通大学-米兰理工学院<br>虚拟现实课程 大作业汇总展示</h1>
 
-    <div class="team-section">
-        <div class="member-card">
-            <img src="teacher_photo.jpg" alt="老师照片">
-            <div class="role">授课教师</div>
-            <div class="name">老师姓名</div>
+    <div class="staff-section">
+        <div class="teacher-row">
+            <div class="card staff-card">
+                <img src="teacher.jpg" alt="授课老师">
+                <span class="role-tag tag-teacher">授课教师</span>
+                <div class="name">王飞 （Fei Wang）</div>
+            </div>
         </div>
-        <div class="member-card">
-            <img src="ta_photo.jpg" alt="助教照片">
-            <div class="role">助教</div>
-            <div class="name">助教姓名</div>
+
+        <div class="ta-row">
+            <div class="card staff-card">
+                <img src="ta1.jpg" alt="助教1">
+                <span class="role-tag tag-ta">助教 (TA)</span>
+                <div class="name">张婷婷（Tingting Zhang） A</div>
+            </div>
+            <div class="card staff-card">
+                <img src="ta2.jpg" alt="助教2">
+                <span class="role-tag tag-ta">助教 (TA)</span>
+                <div class="name">李怡诺（Yinuo Li） B</div>
+            </div>
+            <div class="card staff-card">
+                <img src="ta3.jpg" alt="助教3">
+                <span class="role-tag tag-ta">助教 (TA)</span>
+                <div class="name">李亚宁（Yaning Li） C</div>
+            </div>
         </div>
     </div>
 
-    <hr style="border: 0; height: 1px; background: #eee; margin-bottom: 50px;">
-
     <div class="projects-grid">
         
-        <div class="project-card">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" allowfullscreen></iframe>
+        <div class="card project-card">
+            <div class="video-wrapper">
+                <iframe src="https://www.bilibili.com/video/BV1uza4zWEaa/?share_source=copy_web&vd_source=924baf0b2f498c18fa302230784dcdb8" allowfullscreen></iframe>
             </div>
-            <div class="project-info">
-                <div class="project-title">01. 作品名称示例</div>
-                <div class="author">作者：学生姓名</div>
-                <div class="description">
-                    这是作品的简短介绍。描述该 VR 项目的核心创意、使用的技术栈（如 Unity/Unreal）以及在 XJTU-POLOMI 课程中的收获。
+            <div class="project-content">
+                <div class="project-title">01. 作品项目名称</div>
+                <div class="author-group">
+                    <div class="author-item">作者 1</div>
+                    <div class="author-item">作者 2</div>
+                    <div class="author-item">作者 3</div>
+                    <div class="author-item">作者 4</div>
                 </div>
+                <p class="project-desc">
+                    这里是作品的简介。介绍该 VR 场景的设计理念、使用的交互技术（如 Teleportation, Hand Tracking）以及该项目解决的实际问题。
+                </p>
             </div>
         </div>
-
         </div>
 
-    <footer style="text-align: center; margin-top: 80px; padding: 20px; color: #95a5a6;">
-        © 2026 XJTU-POLOMI VR Course | Designed by AIoT Group
+    <footer>
+        <p>© 2026 XJTU-POLOMI VR Joint Course | Powered by AIoT Group</p>
     </footer>
 
 </body>
