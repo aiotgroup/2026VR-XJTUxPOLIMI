@@ -10,8 +10,8 @@
             --accent-color: #3498db;
             --bg-color: #f4f7f9;
             --card-bg: #ffffff;
-            --pink-tag: #ff85a2; /* 粉色 */
-            --blue-tag: #3498db; /* 蓝色 */
+            --pink-tag: #ff85a2;
+            --blue-tag: #3498db;
         }
 
         body {
@@ -28,31 +28,28 @@
             text-align: center;
             color: var(--primary-color);
             font-size: 1.8rem;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             line-height: 1.4;
         }
 
-        /* --- 教师与助教区域 (缩小版) --- */
+        /* --- 教师与助教全行布局 --- */
         .staff-section {
-            margin-bottom: 50px;
+            display: flex;
+            justify-content: center; /* 整体居中 */
+            align-items: flex-start;
+            gap: 20px; /* 默认卡片间距（助教间距） */
+            margin-bottom: 60px;
+            flex-wrap: wrap;
         }
 
-        .teacher-row {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .ta-row {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap; /* 自动处理3个或更多助教并排 */
+        /* 老师与助教之间的特殊大间隔 */
+        .spacer {
+            width: 60px; /* 这里控制老师和第一个助教之间的额外距离 */
         }
 
         .staff-card {
             background: var(--card-bg);
-            width: 150px; 
+            width: 145px; 
             padding: 12px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
@@ -79,14 +76,13 @@
             font-weight: bold;
         }
 
-        /* 标签颜色控制 */
         .tag-teacher { background-color: #e74c3c; }
         .tag-pink { background-color: var(--pink-tag); }
         .tag-blue { background-color: var(--blue-tag); }
 
         .name {
             font-weight: bold;
-            font-size: 0.82rem; /* 稍微缩小以适应长名字 */
+            font-size: 0.82rem;
             color: var(--primary-color);
             white-space: nowrap; 
             letter-spacing: -0.3px;
@@ -98,6 +94,8 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-top: 40px;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 40px;
         }
 
         .project-card {
@@ -167,12 +165,11 @@
             padding: 40px 0;
             color: #999;
             font-size: 0.85rem;
-            border-top: 1px solid #eee;
         }
 
-        @media (max-width: 480px) {
-            .staff-card { width: 135px; }
-            .projects-grid { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+            .spacer { display: none; } /* 手机端取消大间隔以防溢出 */
+            .staff-section { gap: 10px; }
         }
     </style>
 </head>
@@ -180,32 +177,34 @@
 
     <h1>2026年春季，西安交通大学-米兰理工学院<br>虚拟现实课程 大作业汇总展示</h1>
 
-    <div class="staff-section">
-        <div class="teacher-row">
-            <div class="card staff-card">
+<div class="staff-section">
+        
+        <div class="staff-card">
                 <img src="images/wf2.jpg" alt="授课老师">
                 <span class="role-tag tag-teacher">授课教师（Instructor）</span>
                 <div class="name">王飞 （Fei Wang）</div>
-            </div>
         </div>
 
-        <div class="ta-row">
-            <div class="card staff-card">
-                <img src="images/zhangtt.png" alt="助教1">
+        <div class="spacer"></div>
+
+        <div class="staff-card">
+            <img src="images/zhangtt.png" alt="助教1">
                 <div class="role-tag tag-pink">助教 (TA)</div>
                 <div class="name">张婷婷（Tingting Zhang）</div>
-            </div>
-            <div class="card staff-card">
-                <img src="images/lyn.jpg" alt="助教2">
+        </div>
+
+        <div class="staff-card">
+            <img src="images/lyn.jpg" alt="助教2">
                 <div class="role-tag tag-pink">助教 (TA)</div>
                 <div class="name">李怡诺（Yinuo Li）</div>
-            </div>
-            <div class="card staff-card">
-                <img src="images/yaningli.jpg" alt="助教3">
+        </div>
+
+        <div class="staff-card">
+            <img src="images/yaningli.jpg" alt="助教3">
                 <div class="role-tag tag-blue">助教 (TA)</div>
                 <div class="name">李亚宁（Yaning Li）</div>
-            </div>
         </div>
+
     </div>
 
     <div class="projects-grid">
