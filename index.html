@@ -16,12 +16,21 @@
         .ta-row { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
         
         .card { background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
-        .staff-card { width: 220px; padding: 15px; text-align: center; }
+        .staff-card { 
+        width: 250px; /* 稍微加宽卡片，适应长名字 */
+        padding: 15px; 
+        text-align: center; }
         .staff-card img { width: 100%; height: 260px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; background: #eee; }
         .role-tag { display: inline-block; padding: 3px 12px; border-radius: 15px; font-size: 0.85em; margin-bottom: 8px; color: white; }
         .tag-teacher { background-color: #e74c3c; }
         .tag-ta { background-color: #95a5a6; }
-        .name { font-weight: bold; font-size: 1.1em; color: var(--primary-color); }
+        .name { 
+                font-weight: bold; 
+                font-size: 1.05em; /* 稍微缩小一点字号 */
+                color: var(--primary-color); 
+                white-space: nowrap; /* 强制不换行 */
+                overflow: hidden; 
+                text-overflow: ellipsis; /* 如果实在太长，末尾显示省略号（备选方案） */}
 
         /* 作品网格：一行3个，手机端自动变1个 */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
